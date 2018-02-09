@@ -38,7 +38,6 @@ import SpellManaCost from './Modules/SpellManaCost';
 import Channeling from './Modules/Channeling';
 
 import DistanceMoved from './Modules/Others/DistanceMoved';
-import WarningDisplay from './Modules/Features/WarningDisplay';
 
 import StatsDisplay from './Modules/Features/StatsDisplay';
 import TalentsDisplay from './Modules/Features/TalentsDisplay';
@@ -65,6 +64,8 @@ import DrapeOfShame from './Modules/Items/Legion/DrapeOfShame';
 import DarkmoonDeckPromises from './Modules/Items/Legion/DarkmoonDeckPromises';
 import AmalgamsSeventhSpine from './Modules/Items/Legion/AmalgamsSeventhSpine';
 import GnawedThumbRing from './Modules/Items/Legion/GnawedThumbRing';
+import EyeOfCommand from './Modules/Items/Legion/EyeOfCommand';
+
 // The Nighthold (T19)
 import ErraticMetronome from './Modules/Items/Legion/TheNighthold/ErraticMetronome';
 // Tomb of Sargeras (T20)
@@ -102,6 +103,8 @@ import SheathOfAsara from './Modules/Items/Legion/AntorusTheBurningThrone/Sheath
 import NorgannonsProwess from './Modules/Items/Legion/AntorusTheBurningThrone/NorgannonsProwess';
 import AcridCatalystInjector from './Modules/Items/Legion/AntorusTheBurningThrone/AcridCatalystInjector';
 import ShadowSingedFang from './Modules/Items/Legion/AntorusTheBurningThrone/ShadowSingedFang';
+// Tanking
+import AggramarsConviction from './Modules/Items/Legion/AntorusTheBurningThrone/AggramarsConviction';
 
 // Shared Buffs
 import Concordance from './Modules/Spells/Concordance';
@@ -165,7 +168,6 @@ class CombatLogParser {
     manaValues: ManaValues,
     vantusRune: VantusRune,
     distanceMoved: DistanceMoved,
-    warningDisplay: WarningDisplay,
 
     critEffectBonus: CritEffectBonus,
 
@@ -194,6 +196,7 @@ class CombatLogParser {
     gnawedThumbRing: GnawedThumbRing,
     ishkarsFelshieldEmitter: IshkarsFelshieldEmitter,
     erraticMetronome: ErraticMetronome,
+    eyeOfCommand: EyeOfCommand,
     // Tomb trinkets:
     archiveOfFaith: ArchiveOfFaith,
     barbaricMindslaver: BarbaricMindslaver,
@@ -226,6 +229,9 @@ class CombatLogParser {
     norgannonsProwess: NorgannonsProwess,
     acridCatalystInjector: AcridCatalystInjector,
     shadowSingedFang: ShadowSingedFang,
+
+    // T21 Tanking Trinkets
+    aggramarsConviction: AggramarsConviction,
 
     // Concordance of the Legionfall
     concordance: Concordance,
@@ -485,13 +491,13 @@ class CombatLogParser {
   formatManaRestored(manaRestored) {
     return `${formatThousands(manaRestored)} mana / ${formatThousands(manaRestored / this.fightDuration * 1000 * 5)} MP5`;
   }
-  formatTimestamp(timestamp) {
-    return formatDuration((timestamp - this.fight.start_time) / 1000);
+  formatTimestamp(timestamp, precision = 0) {
+    return formatDuration((timestamp - this.fight.start_time) / 1000, precision);
   }
 
   generateResults() {
     const results = new ParseResults();
-    
+
     results.tabs = [
       {
         title: 'Timeline',
@@ -514,7 +520,7 @@ class CombatLogParser {
         order: 3,
         render: () => (
           <Tab title="Gear">
-            <Gear selectedCombatant={this._modules.combatants.selected}/>
+            <Gear selectedCombatant={this._modules.combatants.selected} />
           </Tab>
         ),
       },

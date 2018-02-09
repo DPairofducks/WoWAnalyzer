@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import SpellLink from 'common/SpellLink';
 
+import Abilities from 'Parser/Core/Modules/Abilities';
+
 const CastEfficiency = ({ categories, abilities }) => {
   if (!abilities) {
     return <div>Loading...</div>;
@@ -12,6 +14,7 @@ const CastEfficiency = ({ categories, abilities }) => {
       <table className="data-table" style={{ marginTop: 10, marginBottom: 10 }}>
         {Object.keys(categories)
           .filter(key => abilities.some(item => item.ability.category === categories[key])) // filters out categories without any abilities in it
+          .filter(key => categories[key] !== Abilities.SPELL_CATEGORIES.HIDDEN) //filters out the hidden category
           .map(key => (
             <tbody key={key}>
               <tr>
@@ -28,7 +31,7 @@ const CastEfficiency = ({ categories, abilities }) => {
                   return (
                     <tr key={name}>
                       <td style={{ width: '35%' }}>
-                        <SpellLink id={ability.primarySpell.id} style={{ color: '#fff' }} icon>
+                        <SpellLink id={ability.primarySpell.id} style={{ color: '#fff' }} icon iconStyle={{ height: undefined, marginTop: undefined }}>
                           {name}
                         </SpellLink>
                       </td>

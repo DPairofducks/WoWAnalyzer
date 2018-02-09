@@ -1,7 +1,7 @@
 import SPELLS from 'common/SPELLS';
 import ITEMS from 'common/ITEMS';
 import SPECS from 'common/SPECS';
-import { calculateSecondaryStatDefault } from 'common/stats';
+import { calculateSecondaryStatDefault, calculatePrimaryStat } from 'common/stats';
 import { formatMilliseconds } from 'common/format';
 
 import Analyzer from 'Parser/Core/Analyzer';
@@ -21,28 +21,28 @@ class StatTracker extends Analyzer {
     // endregion
 
     // region Runes
-    [SPELLS.DEFILED_AUGMENT_RUNE.id]: {strength: 325, agility: 325, intellect: 325},
+    [SPELLS.DEFILED_AUGMENT_RUNE.id]: { strength: 325, agility: 325, intellect: 325 },
     // endregion
 
     //region Flasks
-    [SPELLS.FLASK_OF_THE_WHISPERED_PACT.id]: {intellect: 1300},
-    [SPELLS.FLASK_OF_THE_SEVENTH_DEMON.id]: {agility: 1300},
-    [SPELLS.FLASK_OF_THE_COUNTLESS_ARMIES.id]: {strength: 1300},
-    [SPELLS.FLASK_OF_TEN_THOUSAND_SCARS.id]: {stamina: 1950},
+    [SPELLS.FLASK_OF_THE_WHISPERED_PACT.id]: { intellect: 1300 },
+    [SPELLS.FLASK_OF_THE_SEVENTH_DEMON.id]: { agility: 1300 },
+    [SPELLS.FLASK_OF_THE_COUNTLESS_ARMIES.id]: { strength: 1300 },
+    [SPELLS.FLASK_OF_TEN_THOUSAND_SCARS.id]: { stamina: 1950 },
     // endregion
 
     //region Food
-    [SPELLS.THE_HUNGRY_MAGISTER.id]: {crit: 375},
-    [SPELLS.AZSHARI_SALAD.id]: {haste: 375},
-    [SPELLS.NIGHTBORNE_DELICACY_PLATTER.id]: {mastery: 375},
-    [SPELLS.SEED_BATTERED_FISH_PLATE.id]: {versatility: 375},
-    [SPELLS.STAM_FEAST.id]: {stamina: 600},
-    [SPELLS.STR_FEAST.id]: {strength: 500},
-    [SPELLS.AGI_FEAST.id]: {agility: 500},
-    [SPELLS.INT_FEAST.id]: {intellect: 500},
+    [SPELLS.THE_HUNGRY_MAGISTER.id]: { crit: 375 },
+    [SPELLS.AZSHARI_SALAD.id]: { haste: 375 },
+    [SPELLS.NIGHTBORNE_DELICACY_PLATTER.id]: { mastery: 375 },
+    [SPELLS.SEED_BATTERED_FISH_PLATE.id]: { versatility: 375 },
+    [SPELLS.STAM_FEAST.id]: { stamina: 600 },
+    [SPELLS.STR_FEAST.id]: { strength: 500 },
+    [SPELLS.AGI_FEAST.id]: { agility: 500 },
+    [SPELLS.INT_FEAST.id]: { intellect: 500 },
     //endregion
 
-    // region Trinkets
+    // region Dungeon Trinkets
     [SPELLS.SHADOWS_STRIKE.id]: {
       itemId: ITEMS.DREADSTONE_OF_ENDLESS_SHADOWS.id,
       crit: (_, item) => calculateSecondaryStatDefault(845, 3480, item.itemLevel),
@@ -55,6 +55,49 @@ class StatTracker extends Analyzer {
       itemId: ITEMS.DREADSTONE_OF_ENDLESS_SHADOWS.id,
       haste: (_, item) => calculateSecondaryStatDefault(845, 3480, item.itemLevel),
     },
+    [SPELLS.QUITE_SATISFIED_VERSATILITY.id]: {
+      itemId: ITEMS.MAJORDOMOS_DINNER_BELL.id,
+      versatility: (_, item) => calculateSecondaryStatDefault(845, 5252, item.itemLevel),
+    },
+    [SPELLS.QUITE_SATISFIED_CRIT.id]: {
+      itemId: ITEMS.MAJORDOMOS_DINNER_BELL.id,
+      crit: (_, item) => calculateSecondaryStatDefault(845, 5252, item.itemLevel),
+    },
+    [SPELLS.QUITE_SATISFIED_HASTE.id]: {
+      itemId: ITEMS.MAJORDOMOS_DINNER_BELL.id,
+      haste: (_, item) => calculateSecondaryStatDefault(845, 5252, item.itemLevel),
+    },
+    [SPELLS.QUITE_SATISFIED_MASTERY.id]: {
+      itemId: ITEMS.MAJORDOMOS_DINNER_BELL.id,
+      mastery: (_, item) => calculateSecondaryStatDefault(845, 5252, item.itemLevel),
+    },
+    [SPELLS.HOWL_OF_INGVAR.id]: {
+      itemId: ITEMS.MEMENTO_OF_ANGERBODA.id,
+      crit: (_, item) => calculateSecondaryStatDefault(845, 4207, item.itemLevel),
+    },
+    [SPELLS.DIRGE_OF_ANGERBODA.id]: {
+      itemId: ITEMS.MEMENTO_OF_ANGERBODA.id,
+      mastery: (_, item) => calculateSecondaryStatDefault(845, 4207, item.itemLevel),
+    },
+    [SPELLS.WAIL_OF_SVALA.id]: {
+      itemId: ITEMS.MEMENTO_OF_ANGERBODA.id,
+      haste: (_, item) => calculateSecondaryStatDefault(845, 4207, item.itemLevel),
+    },
+    [SPELLS.DOWN_DRAFT.id]: {
+      itemId: ITEMS.NIGHTMARE_EGG_SHELL.id,
+      haste: (_, item) => calculateSecondaryStatDefault(845, 361, item.itemLevel),
+    },
+    [SPELLS.ACCELERATION.id]: {
+      itemId: ITEMS.CHRONO_SHARD.id,
+      haste: (_, item) => calculateSecondaryStatDefault(845, 5269, item.itemLevel),
+    },
+    [SPELLS.GREASE_THE_GEARS.id]: {
+      itemId: ITEMS.FELOILED_INFERNAL_MACHINE.id,
+      haste: (_, item) => calculateSecondaryStatDefault(845, 3074, item.itemLevel),
+    },
+    //endregion
+
+    // region Raid Trinkets
     // Event weirdness makes it impossible to handle CotRT normally, it's handled instead by the CharmOfTheRisingTide module
     //[SPELLS.RISING_TIDES.id]: {
     //  itemId: ITEMS.CHARM_OF_THE_RISING_TIDE.id,
@@ -63,6 +106,14 @@ class StatTracker extends Analyzer {
     [SPELLS.ACCELERANDO.id]: {
       itemId: ITEMS.ERRATIC_METRONOME.id,
       haste: (_, item) => calculateSecondaryStatDefault(870, 657, item.itemLevel),
+    },
+    [SPELLS.SOLAR_INFUSION.id]: {
+      itemId: ITEMS.CHALICE_OF_MOONLIGHT.id,
+      crit: (_, item) => calculateSecondaryStatDefault(900, 3619, item.itemLevel),
+    },
+    [SPELLS.LUNAR_INFUSION.id]: {
+      itemId: ITEMS.CHALICE_OF_MOONLIGHT.id,
+      haste: (_, item) => calculateSecondaryStatDefault(900, 3619, item.itemLevel),
     },
     [SPELLS.TOME_OF_UNRAVELING_SANITY_BUFF.id]: {
       itemId: ITEMS.TOME_OF_UNRAVELING_SANITY.id,
@@ -90,7 +141,16 @@ class StatTracker extends Analyzer {
       itemId: ITEMS.GAROTHI_FEEDBACK_CONDUIT.id,
       haste: (_, item) => calculateSecondaryStatDefault(930, 856, item.itemLevel),
     },
-    // endregion
+    [SPELLS.RUSH_OF_KNOWLEDGE.id]: {
+      itemId: ITEMS.NORGANNONS_PROWESS.id,
+      intellect: (_, item) => calculatePrimaryStat(940, 11483, item.itemLevel),
+    },
+    // Khaz'goroth's Courage is handled in it's own module since all 4 stat buffs use the same ID.
+    //[SPELLS.KHAZGOROTHS_SHAPING.id]: {
+    //  itemId: ITEMS.KHAZGOROTHS_COURAGE.id,
+    //  haste: (_, item) => calculateSecondaryStatDefault(940, 4219, item.itemLevel),
+    //},
+    // endregion 
 
     // region Misc
     [SPELLS.CONCORDANCE_OF_THE_LEGIONFALL_STRENGTH.id]: { // check numbers
@@ -132,17 +192,17 @@ class StatTracker extends Analyzer {
   on_initialized() {
     // TODO: Use combatantinfo event directly
     this._pullStats = {
-      strength: this.combatants.selected.strength,
-      agility: this.combatants.selected.agility,
-      intellect: this.combatants.selected.intellect,
-      stamina: this.combatants.selected.stamina,
+      strength: this.combatants.selected._combatantInfo.strength,
+      agility: this.combatants.selected._combatantInfo.agility,
+      intellect: this.combatants.selected._combatantInfo.intellect,
+      stamina: this.combatants.selected._combatantInfo.stamina,
       crit: this.combatants.selected.critRating,
       haste: this.combatants.selected.hasteRating,
       mastery: this.combatants.selected.masteryRating,
       versatility: this.combatants.selected.versatilityRating,
-      avoidance: this.combatants.selected.avoidanceRating,
-      leech: this.combatants.selected.leechRating,
-      speed: this.combatants.selected.speedRating,
+      avoidance: this.combatants.selected._combatantInfo.avoidance,
+      leech: this.combatants.selected._combatantInfo.leech,
+      speed: this.combatants.selected._combatantInfo.speed,
     };
     this._currentStats = {
       ...this._pullStats,
@@ -238,12 +298,16 @@ class StatTracker extends Analyzer {
         return standard + 0.03; // 3% from a trait everyone has. TODO: Make traits conditional
       case SPECS.FIRE_MAGE:
         return standard + 0.15; // an additional 15% is gained from the passive Critical Mass
-      case SPECS.MARKSMANSHIP_HUNTER :
-        return standard + 0.05; //baseline +5%
       case SPECS.BEAST_MASTERY_HUNTER :
         return standard + 0.05; //baseline +5%
+      case SPECS.MARKSMANSHIP_HUNTER :
+        return standard + 0.05; //baseline +5%
+      case SPECS.SURVIVAL_HUNTER :
+        return standard + 0.06; //baseline +6%
       case SPECS.WINDWALKER_MONK:
         return standard + 0.05; //baseline +5%
+      case SPECS.HAVOC_DEMON_HUNTER:
+        return standard + 0.06; //baseline +6%
       default:
         return standard;
     }
@@ -279,16 +343,22 @@ class StatTracker extends Analyzer {
         return 0.08;
       case SPECS.WINDWALKER_MONK:
         return 0.1;
+      case SPECS.BEAST_MASTERY_HUNTER:
+        return 0.18;
       case SPECS.MARKSMANSHIP_HUNTER:
         return 0.05;
+      case SPECS.SURVIVAL_HUNTER:
+        return 0.04;
       case SPECS.FROST_MAGE:
         return 0.18;
       case SPECS.FIRE_MAGE:
         return 0.06;
+      case SPECS.ARCANE_MAGE:
+        return 0.0960;
       case SPECS.SUBTLETY_ROGUE:
         return 0.2208;
-      case SPECS.BEAST_MASTERY_HUNTER:
-        return 0.18;
+      case SPECS.ASSASSINATION_ROGUE:
+        return 0.32;
       case SPECS.UNHOLY_DEATH_KNIGHT:
         return 0.18;
       case SPECS.MISTWEAVER_MONK:
@@ -299,6 +369,12 @@ class StatTracker extends Analyzer {
         return 0.11;
       case SPECS.AFFLICTION_WARLOCK:
         return 0.25;
+      case SPECS.FROST_DEATH_KNIGHT:
+        return 0.12;
+      case SPECS.BLOOD_DEATH_KNIGHT:
+        return 0.12;
+      case SPECS.HAVOC_DEMON_HUNTER:
+        return 0.12;
       default:
         console.error('Mastery hasn\'t been implemented for this spec yet.');
         return 0.0;

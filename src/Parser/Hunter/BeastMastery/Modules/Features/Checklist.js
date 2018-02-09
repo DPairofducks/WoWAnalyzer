@@ -18,7 +18,7 @@ import EnchantChecker from 'Parser/Core/Modules/Items/EnchantChecker';
 import DireBeast from 'Parser/Hunter/BeastMastery/Modules/Spells/DireBeast/DireBeast';
 import BestialWrathAverageFocus from 'Parser/Hunter/BeastMastery/Modules/Spells/BestialWrath/BestialWrathAverageFocus';
 import KillerCobra from 'Parser/Hunter/BeastMastery/Modules/Talents/KillerCobra';
-import AspectOfTheBeast from 'Parser/Hunter/BeastMastery/Modules/Talents/AspectOfTheBeast';
+import AspectOfTheBeast from 'Parser/Hunter/Shared/Modules/Talents/AspectOfTheBeast';
 import AspectOfTheWild from 'Parser/Hunter/BeastMastery/Modules/Spells/AspectOfTheWild';
 import DireFrenzy from 'Parser/Hunter/BeastMastery/Modules/Talents/DireFrenzy';
 import TitansThunder from 'Parser/Hunter/BeastMastery/Modules/Traits/TitansThunder';
@@ -59,14 +59,6 @@ class Checklist extends CoreChecklist {
       requirements: () => {
         const combatant = this.combatants.selected;
         return [
-          new GenericCastEfficiencyRequirement({
-            spell: SPELLS.DIRE_BEAST,
-            when: !combatant.hasTalent(SPELLS.DIRE_FRENZY_TALENT.id),
-          }),
-          new GenericCastEfficiencyRequirement({
-            spell: SPELLS.DIRE_FRENZY_TALENT,
-            when: combatant.hasTalent(SPELLS.DIRE_FRENZY_TALENT.id),
-          }),
           new GenericCastEfficiencyRequirement({
             spell: SPELLS.KILL_COMMAND,
           }),

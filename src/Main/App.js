@@ -33,7 +33,6 @@ import FightSelecter from './FightSelecter';
 import PlayerSelecter from './PlayerSelecter';
 import Results from './Results';
 import ReportSelecter from './ReportSelecter';
-import AppBackgroundImage from './AppBackgroundImage';
 import FullscreenError from './FullscreenError';
 import NavigationBar from './Layout/NavigationBar';
 import DocumentTitleUpdater from './Layout/DocumentTitleUpdater';
@@ -192,7 +191,7 @@ class App extends Component {
         progress: PROGRESS_STEP2_FETCH_EVENTS,
       });
 
-      const batchSize = 150;
+      const batchSize = 400;
       const numEvents = events.length;
       let offset = 0;
 
@@ -520,8 +519,6 @@ class App extends Component {
     return (
       <Wrapper>
         <div className={`app ${hasReport ? 'has-report' : ''}`}>
-          <AppBackgroundImage bossId={this.state.bossId} />
-
           <NavigationBar
             parser={parser}
             progress={progress}

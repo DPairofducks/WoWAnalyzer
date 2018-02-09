@@ -43,35 +43,24 @@ class Combatant extends Entity {
     return SPECS[this.specId];
   }
 
-  // Primaries
-  get stamina() {
-    return this._combatantInfo.stamina;
-  }
-  get agility() {
-    return this._combatantInfo.agility;
-  }
-  get strength() {
-    return this._combatantInfo.strength;
-  }
-  get intellect() {
-    return this._combatantInfo.intellect;
-  }
-
   // Secondaries
   get critRating() {
+    console.warn('Using stat properties from the Combatant class is deprecated. Use the StatTracker module instead.');
     return this._combatantInfo.critSpell;
   }
   get critPercentage() {
-    // TODO: Look for a way to include Blood Elf racial
+    console.warn('Using stat properties from the Combatant class is deprecated. Use the StatTracker module instead.');
     return 0.08 + this.critRating / 40000;
   }
   get hasteRating() {
+    console.warn('Using stat properties from the Combatant class is deprecated. Use the StatTracker module instead.');
     return this._combatantInfo.hasteSpell;
   }
   get hastePercentage() {
     return this.hasteRating / 37500;
   }
   get masteryRating() {
+    console.warn('Using stat properties from the Combatant class is deprecated. Use the StatTracker module instead.');
     return this._combatantInfo.mastery;
   }
   get masteryPercentage() {
@@ -94,53 +83,42 @@ class Combatant extends Entity {
         return 0.18 + this.masteryRating / 17777.7777777;
       case SPECS.FIRE_MAGE:
         return 0.06 + this.masteryRating / 53333.3333333;
+      case SPECS.ARCANE_MAGE:
+        return 0.960 + this.masteryRating / 33333.3333333;
       case SPECS.RETRIBUTION_PALADIN:
         return 0.14 + this.masteryRating / 22850;
       case SPECS.PROTECTION_PALADIN:
         return 0.08 + this.masteryRating / 40000;
-      case SPECS.MARKSMANSHIP_HUNTER:
-        return 0.05 + this.masteryRating / 64000;
-      case SPECS.SUBTLETY_ROGUE:
-        return 0.2208 + this.masteryRating / 14492.61221;
       case SPECS.BEAST_MASTERY_HUNTER:
         return 0.18 + this.masteryRating / 17777.7777777;
+      case SPECS.MARKSMANSHIP_HUNTER:
+        return 0.05 + this.masteryRating / 64000;
+      case SPECS.SURVIVAL_HUNTER:
+        return 0.04 + this.masteryRating / 80000;
+      case SPECS.SUBTLETY_ROGUE:
+        return 0.2208 + this.masteryRating / 14492.61221;
+      case SPECS.ASSASSINATION_ROGUE:
+        return 0.32 + this.masteryRating / 10000;
       case SPECS.UNHOLY_DEATH_KNIGHT:
         return 0.18 + this.masteryRating / 17776;
       case SPECS.MISTWEAVER_MONK:
         return 1.04 + this.masteryRating / 3076.96;
       case SPECS.FURY_WARRIOR:
         return 0.11 + this.masteryRating / 28430;
+      case SPECS.FROST_DEATH_KNIGHT:
+        return 0.12 + this.masteryRating / 26666;
       default:
         throw new Error('Mastery hasn\'t been implemented for this spec yet.');
     }
   }
   get versatilityRating() {
+    console.warn('Using stat properties from the Combatant class is deprecated. Use the StatTracker module instead.');
     return this._combatantInfo.versatilityHealingDone;
   }
   get versatilityPercentage() {
     return this.versatilityRating / 47500;
   }
-
-  // Others
-  get armorRating() {
-    return this._combatantInfo.armor;
-  }
-  get blockRating() {
-    return this._combatantInfo.block;
-  }
-  get parryRating() {
-    return this._combatantInfo.parry;
-  }
-  get avoidanceRating() {
-    return this._combatantInfo.avoidance;
-  }
-  get leechRating() {
-    return this._combatantInfo.leech;
-  }
-  get speedRating() {
-    return this._combatantInfo.speed;
-  }
-
+  
   _combatantInfo = null;
   constructor(parser, combatantInfo) {
     super(parser);

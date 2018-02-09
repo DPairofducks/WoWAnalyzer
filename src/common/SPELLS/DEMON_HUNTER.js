@@ -31,13 +31,6 @@ export default {
     icon: 'spell_warlock_soulburn',
   },
 
-  // Racial:
-  ARCANE_TORRENT: {
-    id: 202719,
-    name: 'Arcane Torrent',
-    icon: 'spell_shadow_teleport',
-  },
-
   // Vengeance
 
   // Passive:
@@ -158,6 +151,24 @@ export default {
   },
 
   // Havoc
+  //T21 Bonus
+  HAVOC_T21_2PC_BONUS: {
+    id: 251767,
+    name: 'Havoc T21 2PC Bonus',
+    icon: 'ability_demonhunter_eyebeam',
+  },
+  HAVOC_T21_4PC_BONUS: {
+    id: 251769,
+    name: 'Havoc T21 4PC Bonus',
+    icon: 'ability_demonhunter_eyebeam',
+  },
+  //T21 Buff
+  HAVOC_T21_4PC_BUFF: {
+    id: 252165,
+    name: 'Betrayer\'s Fury',
+    icon: 'ability_demonhunter_eyebeam',
+  },
+  //spells
   DEMONS_BITE: {
     id: 162243,
     name: 'Demon\'s Bite',
@@ -165,6 +176,11 @@ export default {
   },
   CHAOS_STRIKE: {
     id: 162794,
+    name: 'Chaos Strike',
+    icon: 'ability_demonhunter_chaosstrike',
+  },
+  CHAOS_STRIKE_FURY: {
+    id: 193840,
     name: 'Chaos Strike',
     icon: 'ability_demonhunter_chaosstrike',
   },
@@ -183,6 +199,16 @@ export default {
     name: 'Death Sweep',
     icon: 'inv_glaive_1h_artifactaldrochi_d_02dual',
   },
+  DEATH_SWEEP_DAMAGE: {
+    id: 210153,
+    name : 'Death Sweep',
+    icon: 'inv_glaive_1h_artifactaldrochi_d_02dual',
+  },
+  DEATH_SWEEP_DAMAGE_LAST_HIT: {
+    id: 210155,
+    name: 'Death Sweep',
+    icon: 'inv_glaive_1h_artifactaldrochi_d_02dual',
+  },
   FEL_RUSH: {
     id: 195072,
     name: 'Fel Rush',
@@ -198,6 +224,11 @@ export default {
     name: 'Eye Beam',
     icon: 'ability_demonhunter_eyebeam',
   },
+  EYE_BEAM_DAMAGE: {
+    id: 198030,
+    name: 'Eye Beam',
+    icon: 'ability_demonhunter_eyebeam',
+  },
   FURY_OF_THE_ILLIDARI: {
     id: 201467,
     name: 'Fury of the Illidari',
@@ -208,7 +239,7 @@ export default {
     name: 'Consume Magic',
     icon: 'ability_demonhunter_consumemagic',
   },
-  CONSUME_MAGIC_2: {
+  CONSUME_MAGIC_FURY_GEN: {
     id: 218903,
     name: 'Consume Magic',
     icon: 'ability_demonhunter_consumemagic',
@@ -243,6 +274,56 @@ export default {
     name: 'Chaos Nova',
     icon: 'spell_fire_felfirenova',
   },
+  DEMONIC_APPETITE_FURY: {
+    id: 210041,
+    name: 'Demonic Appetite',
+    icon: 'spell_misc_zandalari_council_soulswap',
+  },
+  DEMON_BLADES_FURY: {
+    id: 203796,
+    name: 'Demon Blades',
+    icon: 'inv_weapon_shortblade_92',
+  },
+  BLADE_DANCE_FURY: {
+    id: 245862,
+    name: 'Blade Dance',
+    icon: 'ability_demonhunter_bladedance',
+  },
+  PREPARED_FURY: {
+    id: 203650,
+    name: 'Prepared',
+    icon: 'ability_demonhunter_vengefulretreat',
+  },
+  DECEIVERS_FURY_FURY: {
+    id: 202120,
+    name: 'Deceiver\'s Fury',
+    icon: 'ability_demonhunter_blur',
+  },
+  FEL_MASTERY_FURY: {
+    id: 234244,
+    name: 'Fel Mastery',
+    icon: 'ability_skyreach_piercing_rush',
+  },
+  ANGER_OF_THE_HALF_GIANTS_FURY: {
+    id: 208828,
+    name: 'Gigantic Anger',
+    icon: 'inv_60pvp_ring1a',
+  },
+  ANGER_OF_THE_HALF_GIANTS_BUFF: {
+    id: 208827,
+    name: 'Anger of the Half Giants',
+    icon: 'inv_60pvp_ring1a',
+  },
+  RADDONS_CASCADING_EYES: {
+    id: 215149,
+    name: 'Raddon\'s Cascading Eyes',
+    icon: 'inv_misc_bandana_01',
+  },
+  CONSUME_SOUL: {
+    id: 228532,
+    name: 'Consume Soul',
+    icon: 'ability_warlock_improvedsoulleech',
+  },
   //Havoc Talents
   CHAOS_BLADES_DAMAGE_MH: {
     id: 211796,
@@ -253,6 +334,56 @@ export default {
     id: 211797,
     name: 'Chaos Blades',
     icon: 'inv_glaive_1h_artifactaldrochi_d_03dual',
+  },
+  NEMESIS_DEMON: {
+    id: 208579,
+    name: 'Nemesis',
+    icon: 'spell_shadow_demonicfortitude',
+  },
+  NEMESIS_HUMANOID: {
+    id: 208605,
+    name: 'Nemesis',
+    icon: 'inv_misc_head_human_01',
+  },
+  NEMESIS_ABERRATION: {
+    id: 208607,
+    name: 'Nemesis',
+    icon: 'ability_shawaterelemental_swirl',
+  },
+  NEMESIS_BEAST: {
+    id: 208608,
+    name: 'Nemesis',
+    icon: 'inv_misc_head_tiger_01',
+  },
+  NEMESIS_CRITTER: {
+    id: 208609,
+    name: 'Nemesis',
+    icon: 'inv_pet_mouse',
+  },
+  NEMESIS_DRAGONKIN: {
+    id: 208610,
+    name: 'Nemesis',
+    icon: 'inv_misc_head_dragon_green',
+  },
+  NEMESIS_ELEMENTAL: {
+    id: 208611,
+    name: 'Nemesis',
+    icon: 'spell_fire_elemental_totem',
+  },
+  NEMESIS_GIANT: {
+    id: 208612,
+    name: 'Nemesis',
+    icon: 'achievement_dungeon_ulduarraid_icegiant_01',
+  },
+  NEMESIS_MECHANICAL: {
+    id: 208613,
+    name: 'Nemesis',
+    icon: 'inv_pet_mechanicalbearcub',
+  },
+  NEMESIS_UNDEAD: {
+    id: 208614,
+    name: 'Nemesis',
+    icon: 'spell_holy_senseundead',
   },
   // Talents
   FRAILTY_SPIRIT_BOMB_DEBUFF: {
@@ -387,5 +518,15 @@ export default {
     id: 201460,
     name: 'Unleashed Demons',
     icon: 'ability_demonhunter_metamorphasisdps',
+  },
+  WIDE_EYES: {
+    id: 238045,
+    name: 'Wide Eyes',
+    icon: 'ability_demonhunter_eyebeam',
+  },
+  FEAST_ON_THE_SOULS: {
+    id: 201468,
+    name: 'Feast of the Souls',
+    icon: 'spell_warlock_soulburn',
   },
 };

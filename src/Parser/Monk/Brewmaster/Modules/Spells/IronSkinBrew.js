@@ -52,7 +52,6 @@ class IronSkinBrew extends Analyzer {
       // add the duration from this buff application (?)
       let addedDuration = 0;
       if (spellId === SPELLS.IRONSKIN_BREW.id) {
-        this.brews.consumeCharge(event); // purifying brew is handled in PurifyingBrew
         addedDuration = this.durationPerCast;
       } else if (spellId === SPELLS.PURIFYING_BREW.id) {
         addedDuration = this._durationPerPurify;
@@ -144,9 +143,9 @@ class IronSkinBrew extends Analyzer {
     return {
       actual: this.durationLost / this.totalDuration,
       isGreaterThan: {
-        minor: 0.02,
-        average: 0.05,
-        major: 0.1,
+        minor: 0.05,
+        average: 0.1,
+        major: 0.15,
       },
       style: 'percentage',
     };
